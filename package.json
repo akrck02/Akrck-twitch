@@ -1,0 +1,33 @@
+{
+  "name": "akrck-twitch",
+  "version": "1.0.0",
+  "description": "twitch layouts for akrck",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "bundle": "webpack .",
+    "bundle-w": "webpack -w",
+    "compile": "tsc ",
+    "compile-w": "tsc -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akrck02/GTD_Framework.git"
+  },
+  "keywords": [],
+  "author": "akrck02",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akrck02/GTD_Framework/issues"
+  },
+  "homepage": "https://github.com/akrck02/GTD_Framework#readme",
+  "dependencies": {
+    "typescript": "^4.5.4",
+    "webpack": "^5.65.0"
+  },
+  "devDependencies": {
+    "webpack-cli": "^4.9.1"
+  }
+}

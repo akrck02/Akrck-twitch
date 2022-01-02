@@ -12,6 +12,7 @@ export default class CounterV {
         const view = new UIComponent({
             type: "view",
             classes: ["box-center","box-column"],
+            id: "glowing",
             styles: {
                 width: "100%",
                 height: "100%",

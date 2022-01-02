@@ -1,11 +1,13 @@
+import SocialBar from "../../components/socialbar.js";
 import { PATHS } from "../../config/config.js";
 import { UIComponent } from "../../lib/web/uicomponent.js";
 
 export default class EndingV extends UIComponent {
-
+ 
     public constructor() {
         super({
             type: "view",
+            id: "glowing",
             classes: ["box-column", "box-x-between"],
             styles: {
                 width: "100%",
@@ -119,9 +121,17 @@ export default class EndingV extends UIComponent {
                 classes: ["row","box-x-between", "box-y-left"],
                 styles: {
                     width: "100%",
-                    height: "20%",
-                    padding: "5rem",
                     position: "relative",
+                }
+            });
+
+            const column1 = new UIComponent({
+                type: "div",
+                classes: ["column", "box-row", "box-x-start"],
+                styles : {
+                    flex: ".7",
+                    paddingLeft: "5rem",
+                    paddingBottom: "2rem",
                 }
             });
     
@@ -135,8 +145,18 @@ export default class EndingV extends UIComponent {
                 }
             });
     
-           
-            title.appendTo(row);
+            const column2 = new UIComponent({
+                type: "div",
+                classes: ["column","box-x-end"],
+            });
+
+            const socialbar = new SocialBar();
+
+            title.appendTo(column1);
+            column1.appendTo(row);
+
+            socialbar.appendTo(column2);
+            column2.appendTo(row);
             return row;
         }
     

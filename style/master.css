@@ -1,1 +1,78 @@
 @import url('./bubbleUI-min.css');
+
+
+:root {
+    --glowingSpeed: 6s;
+}
+
+body
+{
+    overflow: hidden;
+}
+
+#chatbox {
+    backdrop-filter: blur(40rem);
+}
+
+#glowing {
+    overflow: hidden;
+    animation: glowingBack var(--glowingSpeed) infinite;
+    --blur : 300rem;
+}
+
+
+#glowing::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -100%;
+    transform: rotate(-45deg);
+    width: 200%;
+    height: 10%;
+    background: rgba(255, 255, 255, 0.2);
+    animation: glowing var(--glowingSpeed) infinite;
+    filter: blur(var(--blur));
+}
+
+@keyframes glowing {
+    0% {
+        filter: blur(var(--blur)) opacity(.2);
+        top: -50%;
+        left: -100%;
+        height: 10%;
+    }
+
+    25% {
+        filter: blur(var(--blur)) opacity(.4);
+        height: 30%;
+    }
+
+    50% {
+        filter: blur(var(--blur)) opacity(.2);
+        top: 100%;
+        left: 100%;
+        height: 0%;
+    }
+
+    100% {
+        filter: blur(var(--blur)) opacity(.2);
+        top: 100%;
+        left: 100%;
+        height: 0%;
+    }
+}
+
+
+@keyframes glowingBack {
+    0% {
+       opacity: 1;
+    }
+
+    50% {
+        opacity: .95;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

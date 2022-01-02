@@ -8,6 +8,7 @@ export default class HomeV {
 
         const view = new UIComponent({
             type: "view",
+            id: "glowing",
             classes: ["box-center"],
             styles: {
                 width: "100%",

@@ -4,6 +4,7 @@ import { CONFIG } from "../config/config.js";
 import CounterV from "./counter/counterV.js";
 import EndingV from "./ending/endingV.js";
 import PlayingV from "./playing/playingV.js";
+import PlayingMiniV, { PlayingMiniOverLayV } from "./playing-mini/PlayingMiniV.js";
 
 export default class Router {
     /**
@@ -25,6 +26,12 @@ export default class Router {
             case "playing":
                 new PlayingV().show(params);
                 break;
+            case "playing-mini":
+                new PlayingMiniV().show(params);
+                break;
+            case "playing-mini-overlay":
+                new PlayingMiniOverLayV().show(params);
+                break;
             case "ending":
                 new EndingV().show(params);
                 break;
@@ -39,5 +46,5 @@ export default class Router {
     /** show a view */
     public static clear() {
         document.body.innerHTML = "";
-    };
+    }
 }

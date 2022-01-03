@@ -6,6 +6,12 @@ import Twitter from "../services/twitter.js";
 import Youtube from "../services/youtube.js";
 
 export default class SocialBar extends UIComponent {
+
+    public github : UIComponent;
+    public youtube : UIComponent;
+    public twitch : UIComponent;
+    public twitter : UIComponent;
+
     public constructor() {
         super({
             type: "div",
@@ -18,68 +24,63 @@ export default class SocialBar extends UIComponent {
             },
         });
 
-        this.show();
     }
 
     public async show(){
 
-        Github.getFollowers("akrck02").then((data) => {
-            const github = this.social(
-                GITHUB({
-                    size: "2rem",
-                    fill: "white",
-                    classes: [],
-                }),
-                data
-            );
+        this.github = this.social(
+            GITHUB({
+                size: "2rem",
+                fill: "white",
+                classes: [],
+            }),
+           ""
+        );
 
-            this.appendChild(github);
-        });
+        this.youtube = this.social(
+            YOUTUBE({
+                size: "2rem",
+                fill: "white",
+                classes: [],
+            }),
+            ""
+        );
 
-        Youtube.getFollowers("akrck02").then((data) => {
-            const youtube = this.social(
-                YOUTUBE({
-                    size: "2rem",
-                    fill: "white",
-                    classes: [],
-                }),
-                data
-            );
+        this.twitch = this.social(
+            TWITCH({
+                size: "2rem",
+                fill: "white",
+                classes: [],
+            }),
+            ""
+        );
 
-            this.appendChild(youtube);
-        });
+        this.twitter = this.social(
+            TWITTER({
+                size: "2rem",
+                fill: "white",
+                classes: [],
+            }),
+            ""
+        );
+      
 
-        Twitch.getFollowers("akrck02").then((data) => {
-            const twitch = this.social(
-                TWITCH({
-                    size: "2rem",
-                    fill: "white",
-                    classes: [],
-                }),
-                data
-            );
+        this.appendChild(this.github);
+        this.appendChild(this.youtube);
+        this.appendChild(this.twitch);
+        this.appendChild(this.twitter);
 
-            this.appendChild(twitch);
-        });
+        await Github.getFollowers("akrck02").then((data) => this.github.element.querySelector("p").innerHTML = data);
+        await Youtube.getFollowers("akrck02").then((data) => this.youtube.element.querySelector("p").innerHTML = data);
+        await Twitch.getFollowers("akrck02").then((data) => this.twitch.element.querySelector("p").innerHTML = data);
+        await Twitter.getFollowers("akrck_02").then((data) => this.twitter.element.querySelector("p").innerHTML = data);
 
-        Twitter.getFollowers("akrck_02").then((data) => {
-            const twitter = this.social(
-                TWITTER({
-                    size: "2rem",
-                    fill: "white",
-                    classes: [],
-                }),
-                data
-            );
-
-            this.appendChild(twitter);
-        });
     }
 
     private social(icon, text): UIComponent {
         const comp = new UIComponent({
             type: "div",
-            classes: ["box-row", "box-center"],
+            classes: ["box-row", "box-center", "social-pill"],
             styles: {
                 borderRadius: "50rem",
                 background: "rgba(255,255,255,0.1)",
@@ -115,5 +116,32 @@ export default class SocialBar extends UIComponent {
         comp.appendChild(textComp);
 
         return comp;
+    }
+
+
+    getYoutube(): UIComponent {
+        return this.youtube;
+    }
+
+    getGithub(): UIComponent {
+        return this.github;
+    }
+
+    getTwitch(): UIComponent {
+        return this.twitch;
+    }
+
+    getTwitter(): UIComponent {
+        return this.twitter;
+    }
+
+
+    getChilds(): UIComponent[] {
+        return [
+            this.github,
+            this.youtube,
+            this.twitch,
+            this.twitter,
+        ];
     }
 }

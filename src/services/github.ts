@@ -1,3 +1,4 @@
+import { PATHS } from "../config/config.js";
 import { HTTPS_METHOD } from "../lib/core/http.js";
 import { efetch } from "../lib/data/easyfetch.js";
 
@@ -10,13 +11,13 @@ export default class Github {
             
             const response = efetch({
                 method: HTTPS_METHOD.GET,
-                url: `https://api.github.com/users/${username}`,
+                url: PATHS.JSON + "followers.json",
                 parameters: {}
             });
             
 
             response.success(data => {
-                resolve(data.followers);
+                resolve(data.github);
             });
           
             response.error(error => {

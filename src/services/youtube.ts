@@ -1,5 +1,5 @@
-import { PATHS } from "../config/config";
-import { HTTPS_METHOD } from "../lib/core/http";
+import { PATHS } from "../config/config.js";
+import { HTTPS_METHOD } from "../lib/core/http.js";
 import { efetch } from "../lib/data/easyfetch.js";
 
 export default class Youtube {

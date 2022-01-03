@@ -7,7 +7,7 @@ export default class PlayingV extends UIComponent {
     public constructor() {
         super({
             type: "view",
-            id: "glowing",
+            id: "",
             classes: ["box-column", "box-x-between"],
             styles: {
                 width: "100%",
@@ -38,7 +38,7 @@ export default class PlayingV extends UIComponent {
     private chatbox(): UIComponent {
         const chatbox = new UIComponent({
             type: "div",
-            id: "chatbox glowing",
+            id: "glowing",
             classes: ["box-row", "box-y-between","box-x-center","back-blur"],
             styles: {
                 position: "absolute",
@@ -83,10 +83,7 @@ export default class PlayingV extends UIComponent {
                 color: "#f7f7f7",
             },
         });
-        
-
-
-
+    
         titleText.appendTo(title);
         title.appendTo(chatbox);
         return chatbox;

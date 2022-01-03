@@ -10,7 +10,8 @@
     "bundle": "webpack .",
     "bundle-w": "webpack -w",
     "compile": "tsc ",
-    "compile-w": "tsc -w"
+    "compile-w": "tsc -w",
+    "serve": "ws --port 5500"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
   },
   "homepage": "https://github.com/akrck02/GTD_Framework#readme",
   "dependencies": {
+    "local-web-server": "^5.1.1",
     "typescript": "^4.5.4",
     "webpack": "^5.65.0"
   },
